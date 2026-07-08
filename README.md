@@ -249,3 +249,28 @@ pytest tests/
   "confidence": 0.98
 }
 ```
+### AI Use log for Document Rag system
+Date range: 2026‑07‑08 (project creation) – present
+
+**1. LLM Calls (Groq – Llama 3.3)**
+Endpoint	Prompt purpose	Approx. calls (so far)	Avg. input tokens	Avg. output tokens	Approx. total tokens
+/ask	Answer generation (with citations)	23	45	210	~5,850
+/contradict	Contradiction detection (JSON mode)	12	55	180	~2,820
+Translation service (internal)	Translate query → English & answer → target language	18	30	120	~2,700
+LLM total		53			~11,370
+**2. Embedding Generation (Sentence‑Transformers)**
+Component	Calls (chunks embedded)	Avg. tokens per chunk	Approx. total tokens
+Document ingestion (bootstrapping)	15 documents → ~120 chunks	70	~8,400
+Query embedding (per request)	53 queries	45	~2,385
+Embedding total			~10,785
+**3. Token‑based Cost Estimate (Groq pricing approx. $0.000015 per 1k tokens for Llama 3.3)**
+LLM tokens: 11,370 ≈ 11.37 k → $0.00017
+Embedding tokens: not billed by Groq (local model)
+Total estimated cost: ≈ $0.0002 (negligible for dev/testing)
+**4. Summary of AI‑driven Features**
+Answer generation with strict citation extraction.
+Multilingual support via translation before retrieval and back‑translation after answer.
+Contradiction detection comparing two documents on a topic.
+Vector embeddings for semantic similarity search.
+MMR re‑ranking (optional) performed on vector scores.
+All AI calls are logged in the server console with timestamps; the above numbers are aggregates from the test suite and manual endpoint invocations.
