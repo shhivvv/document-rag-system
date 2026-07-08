@@ -1,0 +1,22 @@
+MACHINE LEARNING ESSENTIAL NOTES
+================================
+
+Section 1: Supervised Learning
+------------------------------
+Supervised learning is the machine learning task of learning a function that maps an input to an output based on example input-output pairs. It infers a function from labeled training data consisting of a set of training examples.
+Common algorithms:
+1. Linear Regression (for continuous values)
+2. Logistic Regression (for binary classification)
+3. Support Vector Machines (SVM)
+4. Random Forests and Decision Trees
+
+Section 2: Gradient Descent
+---------------------------
+Gradient descent is an optimization algorithm used to minimize some cost function by iteratively moving in the direction of steepest descent as defined by the negative of the gradient. In machine learning, we use gradient descent to update the parameters (weights and biases) of our model.
+The size of steps taken to reach the minimum is determined by the learning rate. If the learning rate is too high, the algorithm may overshoot the minimum and diverge. If it is too low, the algorithm will take too long to converge.
+
+Section 3: Bias-Variance Tradeoff
+---------------------------------
+- Bias: Error introduced by approximating a real-world problem (which may be extremely complex) by a much simpler model. High bias leads to underfitting.
+- Variance: Error introduced by the model's sensitivity to small fluctuations in the training set. High variance leads to overfitting.
+The tradeoff is the sweet spot where the combined error of bias and variance is minimized.
